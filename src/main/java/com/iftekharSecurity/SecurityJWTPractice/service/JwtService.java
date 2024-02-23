@@ -1,10 +1,10 @@
 package com.iftekharSecurity.SecurityJWTPractice.service;
 
+import com.iftekharSecurity.SecurityJWTPractice.model.UserModel;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.apache.catalina.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +48,7 @@ public class JwtService {
                 .getPayload();
     }
 
-    public String generateToken(User user){
+    public String generateToken(UserModel user){
         String token = Jwts
                 .builder()
                 .subject(user.getUsername())

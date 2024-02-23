@@ -1,7 +1,7 @@
 package com.iftekharSecurity.SecurityJWTPractice.filter;
 
 import com.iftekharSecurity.SecurityJWTPractice.service.JwtService;
-import com.iftekharSecurity.SecurityJWTPractice.service.UserDetailsImp;
+import com.iftekharSecurity.SecurityJWTPractice.service.UserDetailsServiceImp;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,12 +20,13 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-    private final UserDetailsImp userDetailsService;
+    private final UserDetailsServiceImp userDetailsService;
 
-    public JwtAuthenticationFilter(JwtService jwtService, UserDetailsImp userDetails) {
+    public JwtAuthenticationFilter(JwtService jwtService, UserDetailsServiceImp userDetailsService) {
         this.jwtService = jwtService;
-        this.userDetailsService = userDetails;
+        this.userDetailsService = userDetailsService;
     }
+
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull FilterChain filterChain) throws ServletException, IOException {
